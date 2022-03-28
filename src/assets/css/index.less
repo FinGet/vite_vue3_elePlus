@@ -1,0 +1,140 @@
+@import './transform.less';
+@import './mixin.less';
+@import './sidebar.less';
+@import './variables.less';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,body,#app {
+  width: 100%;
+  height: 100%;
+}
+
+.width100 {
+	width: 100% !important;
+}
+.height100 {
+	height: 100% !important;
+}
+
+.generate-width(400);
+
+//------------- 常用margin,padding start ----------------//
+.generate-margin(30, T, top);
+.generate-margin(30, B, bottom);
+.generate-margin(30, L, left);
+.generate-margin(30, R, right);
+//------------- 常用margin,padding end ----------------//
+.generate-padding(30, T, top);
+.generate-padding(30, B, bottom);
+.generate-padding(30, L, left);
+.generate-padding(30, R, right);
+
+//------------- 常用margin,padding end ----------------//
+
+@align: left, right, center;
+// .text-center .text-left .text-right 
+each(@align, {
+  .text-@{value} {
+    text-align: @value;
+  }
+});
+
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.ellipsis{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden
+}
+
+
+//------------- flex布局 start ----------------//
+
+.display-flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.display-inline-flex {
+	display: inline-flex;
+}
+
+.flex-1 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.flex-2 {
+	-webkit-box-flex: 2;
+	-moz-box-flex: 2;
+	-webkit-flex: 2;
+	-ms-flex: 2;
+	flex: 2;
+}
+
+.flex-row {
+	.flex(flex-direction, row)
+}
+
+.flex-column {
+	.flex(flex-direction, column)
+}
+
+.j-c-c {
+	.flex(justify-content, center)
+}
+
+.j-c-f-e {
+	.flex(justify-content, flex-end)
+}
+
+.j-c-s-b {
+	.flex(justify-content, space-between)
+}
+
+.j-c-s-a {
+	.flex(justify-content, space-around)
+}
+
+.a-i-c {
+	.flex(align-items, center)
+}
+
+.flex-wrap {
+	.flex(flex-wrap, wrap)
+}
+
+.flex-center {
+	.display-flex();
+	.j-c-c();
+	.a-i-c();
+}
+.flex-between {
+  .display-flex();
+  .a-i-c();
+  .j-c-s-b();
+}
+//------------- flex布局 end ----------------//
