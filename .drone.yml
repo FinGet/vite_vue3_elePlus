@@ -1,0 +1,65 @@
+kind: pipeline
+type: docker
+name: vite-vue3
+
+trigger:
+  branch:
+    - master
+
+steps:
+  # 使用缓存
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+    volumes:
+      - name: node_cache
+        path: /cache
+
+  # 打包
+  - name: build
+    image: node:16
+    commands:
+      - node -v
+      - yarn -v
+      - yarn 
+      - yarn run build
+
+  # 更新缓存
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
+    volumes:
+      - name: node_cache
+        path: /cache
+
+  # 部署
+  - name: deploy
+    image: appleboy/drone-scp
+    settings:
+      host:
+        from_secret: ssh_host
+      port: 22
+      username: root
+      key:
+        from_secret: ssh_key
+      command_timeout: 3m
+      # 设置要将打包户的文件部署到的文件地址
+      target: /app/blog/${DRONE_BRANCH}
+      source: dist/*
+      rm: true
+      strip_components: 1
+    when:
+      status:
+        - success
+
+volumes:
+  - name: node_cache
+    host:
+      path: /data/node
+
