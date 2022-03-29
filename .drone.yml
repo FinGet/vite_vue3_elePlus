@@ -47,8 +47,10 @@ steps:
       host:
         from_secret: ssh_host
       username: root
-      key:
-        from_secret: ssh_key
+      password: 
+        from_secret: ssh_password
+      # key:
+      #   from_secret: ssh_key
       command_timeout: 3m
       # 设置要将打包户的文件部署到的文件地址
       target: /app/blog/vue
