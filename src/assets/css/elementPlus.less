@@ -1,0 +1,26 @@
+// 修改element-plus root style
+
+@tableBorderColor: #34495e;
+
+
+:root {
+  --el-text-color-primary: @textColor;
+}
+
+
+.el-card {
+  border: none !important;
+  --el-card-padding: 10px !important;
+}
+
+.el-table {
+  --el-table-border: 2px solid @tableBorderColor !important;
+  --el-table-header-text-color: @tableBorderColor !important;
+  --el-table-text-color: rgb(38, 40, 36) !important;
+  td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+    border: none !important;
+  }
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  background: #f5f8f9 !important;
+}

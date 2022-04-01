@@ -1,6 +1,5 @@
 <template>
   <div>
-    asfaksk
     <router-view />
   </div>
 </template>

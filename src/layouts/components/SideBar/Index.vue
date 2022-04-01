@@ -33,19 +33,8 @@
   const isCollapse = computed(() => appStore.sidebar.isCollapse);
   const routes = appStore.routes;
   const filterRoutes = computed(() => routes.find(item => item.path === '/')?.children);
+  console.log(filterRoutes.value);
 </script>
 
 <style lang="less" scoped>
-:deep(.el-main) {
-	padding: 0;
-}
-:deep(.el-header) {
-	-webkit-box-shadow: 0 1px 4px rgba(0,21,41,.08);
-	box-shadow: 0 1px 4px rgba(0,21,41,.08);
-	padding-right: 20px;
-	padding-left: 0;
-}
-:deep(.el-aside)  {
-  box-shadow: rgb(241, 241, 241) 2px 0px 6px;
-}
 </style>

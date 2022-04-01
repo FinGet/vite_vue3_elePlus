@@ -1,12 +1,15 @@
 <template>
   <div class="top-bar flex-between">
-    <div 
-      :class="['collapse', !sidebar.isCollapse?'left':'']"
-      @click="toggleSidebar"
-    >
-      <el-icon :size="24" color="#606266">
-        <expand />
-      </el-icon>
+    <div class="display-flex a-i-c">
+      <div 
+        :class="['collapse','marginR20', !sidebar.isCollapse?'left':'']"
+        @click="toggleSidebar"
+      >
+        <el-icon :size="24" color="#204ec1">
+          <expand />
+        </el-icon>
+      </div>
+      <Logo />
     </div>
     <div class="user-info">
       <el-dropdown>
@@ -31,6 +34,7 @@
 
 <script setup lang="ts">
   import { useAppStore } from '@/store/modules/app';
+  import Logo from './Logo.vue';
 
   const {sidebar, toggleSidebar} = useAppStore();
 </script>
@@ -42,7 +46,7 @@
   .collapse {
     display: inline-block;
     height: 100%;
-    line-height: 62px;
+    line-height: 6px;
     cursor: pointer;
     &.left {
       transform: rotate(180deg);

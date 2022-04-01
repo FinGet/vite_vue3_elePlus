@@ -10,7 +10,7 @@
         </el-form-item>
         <el-form-item>
           <el-button class="width100" type="primary" @click="onSubmit">
-            登陆
+            登录
           </el-button>
         </el-form-item>
       </el-form>

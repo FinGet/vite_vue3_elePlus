@@ -13,14 +13,20 @@ export const routes: RouteConfig[] = [
 			{
 				path: '/home',
 				name: 'Home',
-				component: () => import('@/views/Home.vue'),
+				component: () => import('@/views/home.vue'),
 				meta: {title: '首页', icon: 'HomeFilled'}
 			},
 			{
 				path: '/test',
 				name: 'Test',
-				component: () => import('@/views/Test.vue'),
+				component: () => import('@/views/test.vue'),
 				meta: {title: '测试', icon: 'BellFilled'},
+			},
+			{
+				path: '/table',
+				name: 'Table',
+				component: () => import('@/views/table.vue'),
+				meta: {title: '表格', icon: 'BellFilled'},
 			}
 		] 
 	},

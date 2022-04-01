@@ -1,16 +1,10 @@
 
 .sidebar-container {
-	transition: width 0.28s;
+	// transition: width 1s;
 	width: @sideBarWidth !important;
 	background-color: @menuBg;
 	height: 100%;
-	position: fixed;
 	font-size: 0px;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1001;
-	overflow: hidden;
 	text-align: left;
 
 	// reset element-ui css
@@ -33,12 +27,6 @@
 		height: 100%;
 	}
 
-	&.has-logo {
-		.el-scrollbar {
-			height: calc(100% - @logoHeight);
-		}
-	}
-
 	.is-horizontal {
 		display: none;
 	}
@@ -57,7 +45,7 @@
 		border: none;
 		height: 100%;
 		width: 100% !important;
-		border-right: 1px solid #e8e8e8;
+		// border-right: 1px solid #e8e8e8;
 	}
 
 	// menu hover
@@ -69,6 +57,7 @@
 	}
 
 	.el-submenu.is-active,.el-menu-item.is-active {
+		color: @menuActiveText !important;
 		background-color: @menuActiveBg !important;
 	}
 	.is-active>.el-submenu__title, .is-active>.el-submenu__title i{
@@ -91,11 +80,11 @@
 
 .hideSidebar {
 	.sidebar-container {
-		width: 64px !important;
+		width: @collapseBarWidth !important;
 	}
 
 	.main-container {
-		margin-left: 64px;
+		margin-left: @collapseBarWidth;
 	}
 
 	.submenu-title-noDropdown {
