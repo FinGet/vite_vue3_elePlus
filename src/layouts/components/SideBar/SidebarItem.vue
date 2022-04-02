@@ -1,8 +1,8 @@
 <template>
-  <div v-if="!item.hidden" class="menu-wrapper">
+  <template v-if="!item.hidden">
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
-        <el-icon><component :is="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" /> </el-icon>
+        <el-icon v-if="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)"><component :is="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" /> </el-icon>
         <template #title>
           <span>{{ onlyOneChild.meta.title }}</span>
         </template>
@@ -10,7 +10,7 @@
     </template>
     <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)">
       <template #title>
-        <el-icon><component :is="item.meta && item.meta.icon" /> </el-icon>
+        <el-icon v-if="item.meta && item.meta.icon"><component :is="item.meta && item.meta.icon" /> </el-icon>
         <span>{{ item.meta.title }}</span>
       </template>
       <sidebar-item
@@ -22,7 +22,7 @@
         class="nest-menu"
       />
     </el-sub-menu>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
