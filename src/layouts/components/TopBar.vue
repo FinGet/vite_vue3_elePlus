@@ -5,16 +5,17 @@
         :class="['collapse','marginR20', !sidebar.isCollapse?'left':'']"
         @click="toggleSidebar"
       >
-        <el-icon :size="24" color="#204ec1">
-          <expand />
-        </el-icon>
+        <el-icon :size="24" color="#204ec1"><Expand /></el-icon>
       </div>
       <Logo />
     </div>
 
     <div class="display-flex">
+      <div class="icon-tool flex-center marginR30" @click="handleFresh">
+        <el-icon :size="24" color="#444"><Refresh /></el-icon>
+      </div>
       <div class="icon-tool flex-center marginR30" @click="toggle">
-        <el-icon :size="24">
+        <el-icon :size="24" color="#444">
           <Iconfullscreen v-if="!isFullscreen" />
           <IconClosefullscreen v-else />
         </el-icon>
@@ -50,6 +51,10 @@
   const { isFullscreen, toggle } = useFullscreen();
 
   const {sidebar, toggleSidebar} = useAppStore();
+  const emit = defineEmits(['fresh']);
+  const handleFresh = () => {
+    emit('fresh');
+  };
   
 </script>
 
