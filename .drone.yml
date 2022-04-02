@@ -25,6 +25,7 @@ steps:
       - node -v
       - yarn -v
       - yarn 
+      - yarn add increase-memory-limit
       - increase-memory-limit
       - yarn run build
 
