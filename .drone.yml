@@ -8,38 +8,38 @@ trigger:
 
 steps:
   # 使用缓存
-  - name: restore-cache
-    image: drillster/drone-volume-cache
-    settings:
-      restore: true
-      mount:
-        - ./node_modules
-    volumes:
-      - name: node_cache
-        path: /cache
+  # - name: restore-cache
+  #   image: drillster/drone-volume-cache
+  #   settings:
+  #     restore: true
+  #     mount:
+  #       - ./node_modules
+  #   volumes:
+  #     - name: node_cache
+  #       path: /cache
 
-  # 打包
-  - name: build
-    image: node:16
-    commands:
-      - node -v
-      - yarn -v
-      - yarn 
-      - yarn add increase-memory-limit
-      - increase-memory-limit
-      - yarn run increase
-      - yarn run build
+  # # 打包
+  # - name: build
+  #   image: node:16
+  #   commands:
+  #     - node -v
+  #     - yarn -v
+  #     - yarn 
+  #     - yarn add increase-memory-limit
+  #     - increase-memory-limit
+  #     - yarn run increase
+  #     - yarn run build
 
-  # 更新缓存
-  - name: rebuild-cache
-    image: drillster/drone-volume-cache
-    settings:
-      rebuild: true
-      mount:
-        - ./node_modules
-    volumes:
-      - name: node_cache
-        path: /cache
+  # # 更新缓存
+  # - name: rebuild-cache
+  #   image: drillster/drone-volume-cache
+  #   settings:
+  #     rebuild: true
+  #     mount:
+  #       - ./node_modules
+  #   volumes:
+  #     - name: node_cache
+  #       path: /cache
 
   # 部署
   - name: deploy
