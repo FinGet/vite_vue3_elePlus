@@ -23,11 +23,9 @@ steps:
     image: node:16
     commands:
       - node -v
-      - which node
       - yarn -v
-      - yarn config set registry https://registry.npm.taobao.org -g
-      - yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g
       - yarn 
+      - increase-memory-limit
       - yarn run build
 
   # 更新缓存
