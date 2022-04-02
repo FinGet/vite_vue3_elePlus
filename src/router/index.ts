@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import BlankLayout from "@/layouts/BlankLayout.vue";
+import { useTitle } from '@vueuse/core';
 export type RouteConfig = RouteRecordRaw & { hidden?: boolean }; //hidden 是可选属性
 
 export const routes: RouteConfig[] = [
@@ -56,5 +57,12 @@ const router = createRouter({
 	history: createWebHistory('/vue3'), // 打包后的文件放在那个路径下
 	routes,
 });
+
+router.beforeEach((to, from) => {
+	if(to.meta.title) {
+		const title = useTitle(to.meta.title as string);
+	}
+});
+
 
 export default router;

@@ -5,7 +5,7 @@
 <script setup lang="ts">
   import {useModel} from '@/hooks';
   // import { defineProps, defineEmits } from "vue"; // defineProps,defineEmits is a compiler macro and no longer needs to be imported
-  import { useMouse,useTitle } from '@vueuse/core';
+  import { useMouse } from '@vueuse/core';
 
   const props = defineProps({
     modelValue: {
@@ -20,9 +20,6 @@
 
   console.log(x.value);
 
-  const title = useTitle();
-  console.log(title.value); // print current title
-  title.value = 'Hello';
   // expects emits options
   const emit = defineEmits(['update:modelValue']);
   const model = useModel(() => props.modelValue, (val) => emit('update:modelValue', val));
