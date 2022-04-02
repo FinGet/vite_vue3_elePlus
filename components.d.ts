@@ -36,6 +36,7 @@ declare module 'vue' {
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     ICustomCloseFullscreen: typeof import('~icons/custom/close-fullscreen')['default']
     ICustomFullscreen: typeof import('~icons/custom/fullscreen')['default']
+    TestCom: typeof import('./src/components/TestCom/index.vue')['default']
   }
 }
 

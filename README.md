@@ -58,7 +58,7 @@ plugins: [
 ```
 
 > cannot find module? 
-```
+```javascript
 // tsconfig.json
 compilerOptions : {
 types: [
@@ -69,7 +69,7 @@ types: [
 
 
 如何使用：
-```
+```bash
 {prefix}-{collection}-{icon} 
 {前缀（默认i）}-{图标集名称（custom）}-{图标名称（refresh-line）}
 
@@ -78,7 +78,7 @@ i-custom-fullscreen
 
 ### 新增自定义Icon组
 
-```
+```javascript
 // vite.config.js
 
 Icons({ 
@@ -116,7 +116,7 @@ plugins: [
 
 现在官方还不支持自动引入
 
-```javasript
+```javascript
 // plugins/elementIcon.ts
 import type {App} from 'vue';
 import { HomeFilled, House } from '@element-plus/icons';

@@ -1,5 +1,8 @@
 <template>
-  <el-input v-model="model" style="width: 200px" type="text" />
+  <el-card>
+    <el-input v-model="model" style="width: 200px" type="text" />
+    <test-com/>
+  </el-card>
 </template>
 
 <script setup lang="ts">
