@@ -1,11 +1,141 @@
 # Vue 3 + Typescript + Vite
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## auto-import
 
-## Recommended IDE Setup
+• unplugin-auto-import来实现vue函数的自动导入
+• unplugin-vue-components来实现vue组件库的自动按需导入
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+自动引入了`vue`,`vue-router`所以页面中使用`ref`,`reactive`,`useRouter`等函数，就不需要手动导入了。
 
-## Type Support For `.vue` Imports in TS
+```javascript
+AutoImport({
+  include: [
+    /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+    /\.vue$/, /\.vue\?vue/, // .vue
+    /\.md$/, // .md
+  ],
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+  // global imports to register
+  imports: [
+    // presets
+    'vue',
+    'vue-router',
+    // custom
+    {
+      // 自定义导入的函数，按需加载
+      '@vueuse/core': [
+        // named imports
+        'useMouse', // import { useMouse } from '@vueuse/core',
+        'useFullscreen'
+        // alias 设置别名
+        // ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+      ],
+    },
+  ],
+})
+```
+> eslint-undef: 需要在tsconfig.json 中 :
+`includes:["./auto-imports.d.ts","./components.d.ts"]`
+
+## 自定义ICON
+
+使用svg，直接放在`src/assets/svg`目录下即可.
+
+
+### 自动引入
+
+```javascript
+plugins: [
+  Components({
+    dts: true,
+    resolvers: [
+      IconsResolver({
+        customCollections: ['custom']
+      })
+    ],
+  }),
+]
+```
+
+> cannot find module? 
+```
+// tsconfig.json
+compilerOptions : {
+types: [
++  "unplugin-icons/types/vue",
+ ]
+}
+```
+
+
+如何使用：
+```
+{prefix}-{collection}-{icon} 
+{前缀（默认i）}-{图标集名称（custom）}-{图标名称（refresh-line）}
+
+i-custom-fullscreen
+```
+
+### 新增自定义Icon组
+
+```
+// vite.config.js
+
+Icons({ 
+  // 自定义图标加载
+  customCollections: {
++    'new-custom': FileSystemIconLoader('src/assets/svg', svg => svg.replace(/^<svg /, '<svg fill="currentColor" ')),
+  }, 
+}),
+```
+
+> 自定义ICON支持自动引入，不需要在也页面中再次引入
+
+## ElementPlus
+
+### 组件自动引入
+```javascript
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+
+plugins: [
+  Components({
+    dts: true,
+    resolvers: [
+      ElementPlusResolver(),
+      // {prefix}-{collection}-{icon} {前缀（默认i）}-{图标集名称（custom）}-{图标名称（refresh-line）}
+      IconsResolver({
+        customCollections: ['custom']
+      })
+    ],
+  }),
+]
+```
+
+### ElementIcon引入
+
+现在官方还不支持自动引入
+
+```javasript
+// plugins/elementIcon.ts
+import type {App} from 'vue';
+import { HomeFilled, House } from '@element-plus/icons';
+
+const Icons = [HomeFilled,House];
+
+export const installIcon = (app: App) => {
+  Icons.forEach(Icon => {
+    app.component(Icon.name, Icon);
+  });
+};
+
+// main.ts
+import {installIcon} from '@/plugins/elementIcon';
+installIcon(app)
+```
+
+## vueUse
+
+引入`vueUse`,用很多好用的方法，减少造轮子。
+
+https://vueuse.org/

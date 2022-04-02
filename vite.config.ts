@@ -18,18 +18,48 @@ export default defineConfig({
 			// 自定义图标加载
 			customCollections: {
 				// 给svg文件设置fill="currentColor"属性，使图标的颜色具有适应性
-				'myIcon': FileSystemIconLoader('src/assets/svg', svg => svg.replace(/^<svg /, '<svg fill="currentColor" ')),
+				'custom': FileSystemIconLoader('src/assets/svg', svg => svg.replace(/^<svg /, '<svg fill="currentColor" ')),
 			}, 
 		}),
+		// 实现vue函数的自动导入
 		AutoImport({
+			include: [
+				/\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+				/\.vue$/, /\.vue\?vue/, // .vue
+				/\.md$/, // .md
+			],
+		
+			// global imports to register
+			imports: [
+				// presets
+				'vue',
+				'vue-router',
+				// custom
+				{
+					'@vueuse/core': [
+						// named imports
+						'useMouse', // import { useMouse } from '@vueuse/core',
+						'useFullscreen',
+						'useTitle'
+						// alias
+						// ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+					],
+					// 'axios': [
+					// 	// default imports
+					// 	['default', 'axios'], // import { default as axios } from 'axios',
+					// ],
+				},
+			],		
 			resolvers: [ElementPlusResolver()],
 		}),
+		// 实现vue组件库的自动按需导入
 		Components({
 			dts: true,
 			resolvers: [
 				ElementPlusResolver(),
+				// {prefix}-{collection}-{icon} {前缀（默认i）}-{图标集名称（custom）}-{图标名称（refresh-line）}
 				IconsResolver({
-					customCollections: ['myIcon']
+					customCollections: ['custom']
 				})
 			],
 		}),

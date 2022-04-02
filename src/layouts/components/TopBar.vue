@@ -16,8 +16,8 @@
       </div>
       <div class="icon-tool flex-center marginR30" @click="toggle">
         <el-icon :size="24" color="#444">
-          <Iconfullscreen v-if="!isFullscreen" />
-          <IconClosefullscreen v-else />
+          <i-custom-fullscreen v-if="!isFullscreen" />
+          <i-custom-close-fullscreen v-else />
         </el-icon>
       </div>
       <div class="user-info">
@@ -45,9 +45,6 @@
 <script setup lang="ts">
   import { useAppStore } from '@/store/modules/app';
   import Logo from './Logo.vue';
-  import Iconfullscreen from '~icons/myIcon/fullscreen';
-  import IconClosefullscreen from '~icons/myIcon/closeFullscreen';
-  import { useFullscreen } from '@vueuse/core';
   const { isFullscreen, toggle } = useFullscreen();
 
   const {sidebar, toggleSidebar} = useAppStore();

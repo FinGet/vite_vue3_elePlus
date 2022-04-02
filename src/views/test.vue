@@ -4,8 +4,6 @@
 
 <script setup lang="ts">
   import {useModel} from '@/hooks';
-  // import { defineProps, defineEmits } from "vue"; // defineProps,defineEmits is a compiler macro and no longer needs to be imported
-  import { useMouse } from '@vueuse/core';
 
   const props = defineProps({
     modelValue: {

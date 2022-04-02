@@ -13,7 +13,7 @@
       <el-form-item label="Activity time">
         <el-col :span="11">
           <el-date-picker
-            v-model="form.date1"
+            v-model="form.activityDate"
             type="date"
             placeholder="Pick a date"
             style="width: 100%"
@@ -24,7 +24,7 @@
         </el-col>
         <el-col :span="11">
           <el-time-picker
-            v-model="form.date2"
+            v-model="form.activityDateEnd"
             placeholder="Pick a time"
             style="width: 100%"
           />
@@ -61,14 +61,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive } from 'vue';
+  // import { reactive } from 'vue';
 
   // do not use same name with ref
   const form = reactive({
     name: '',
     region: '',
-    date1: '',
-    date2: '',
+    activityDate: '',
+    activityDateEnd: '',
     delivery: false,
     type: [],
     resource: '',

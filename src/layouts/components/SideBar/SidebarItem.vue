@@ -26,8 +26,6 @@
 </template>
 
 <script lang="ts">
-  import { toRefs, reactive, defineComponent } from 'vue';
-  // import {resolve} from "path";
   export default defineComponent({
     name: 'SidebarItem',
     props: {

@@ -34,6 +34,8 @@ declare module 'vue' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    ICustomCloseFullscreen: typeof import('~icons/custom/close-fullscreen')['default']
+    ICustomFullscreen: typeof import('~icons/custom/fullscreen')['default']
   }
 }
 

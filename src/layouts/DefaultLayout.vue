@@ -25,7 +25,6 @@
 
 <script setup lang="ts">
   import { useAppStore } from '@/store/modules/app';
-  import { computed,nextTick,ref } from 'vue';
   import Sidebar from './components/SideBar/Index.vue';
   import TopBar from './components/TopBar.vue';
   const appStore = useAppStore();

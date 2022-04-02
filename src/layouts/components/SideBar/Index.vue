@@ -17,9 +17,7 @@
 
 <script setup lang="ts">
   import SidebarItem from './SidebarItem.vue';
-  import { computed } from 'vue';
   import { useAppStore } from '@/store/modules/app';
-  import { useRoute } from 'vue-router';
 
   const route = useRoute();
   const activeMenu = computed(():string => {

@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, ref, toRefs } from 'vue';
-  import { useRouter } from 'vue-router';
   import { useUserStore } from '@/store/modules/user';
   import { useAppStore } from '@/store/modules/app';
   import type { ElForm } from 'element-plus';

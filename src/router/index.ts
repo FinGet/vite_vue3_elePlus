@@ -2,7 +2,6 @@ import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import BlankLayout from "@/layouts/BlankLayout.vue";
-import { useTitle } from '@vueuse/core';
 export type RouteConfig = RouteRecordRaw & { hidden?: boolean }; //hidden 是可选属性
 
 export const routes: RouteConfig[] = [
