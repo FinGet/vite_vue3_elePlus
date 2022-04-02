@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
+    "increase": "increase-memory-limit",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix --ext .ts,.tsx"
   },

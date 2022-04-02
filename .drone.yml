@@ -27,6 +27,7 @@ steps:
       - yarn 
       - yarn add increase-memory-limit
       - increase-memory-limit
+      - yarn run increase
       - yarn run build
 
   # 更新缓存
