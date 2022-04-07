@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import {resolve} from "path";
 
 import AutoImport from "unplugin-auto-import/vite";
@@ -13,6 +14,7 @@ export default defineConfig({
 	base: './', // 静态资源和index.html在同一级目录下
 	plugins: [
 		vue(),
+		vueJsx(),
 		Icons({ 
 			compiler: 'vue3',
 			// 自定义图标加载
