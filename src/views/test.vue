@@ -1,7 +1,10 @@
 <template>
   <el-card>
+    <el-icon :size="20">
+      <eli-aim />
+    </el-icon>
     <el-input v-model="model" style="width: 200px" type="text" />
-    <test-com/>
+    <test-com />
   </el-card>
 </template>
 

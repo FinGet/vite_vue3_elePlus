@@ -116,6 +116,7 @@ plugins: [
 
 现在官方还不支持自动引入
 
+- 手动引入
 ```javascript
 // plugins/elementIcon.ts
 import type {App} from 'vue';
@@ -133,6 +134,39 @@ export const installIcon = (app: App) => {
 import {installIcon} from '@/plugins/elementIcon';
 installIcon(app)
 ```
+
+- 自动引入
+```javascript
+// vite.config.ts
+const _strings = require('@iconify/utils/lib/misc/strings');
+
+const ElIconResolver = (options = {}) => {
+	return (name) => {
+		const kebab = _strings.camelToKebab.call(void 0, name);
+		const prefix = 'eli';
+		if (!kebab.startsWith(prefix))
+			return;
+
+		const slice = kebab.slice(prefix.length);
+
+		return `@element-plus/icons-vue/dist/es/${slice.substring(1).toLowerCase()}`;
+	};
+};
+
+{
+  plugins: [
+    Components({
+      resolvers: [
+        ElIconResolver()
+      ],
+    })
+  ]
+}
+```
+
+> unplugin 的自动引入，都不支持预加载，导致不能使用components做动态组件加载，所以在
+侧边导航上使用的icon,还是需要提前手动导入
+
 
 ## vueUse
 

@@ -5,14 +5,14 @@
         :class="['collapse','marginR20', !sidebar.isCollapse?'left':'']"
         @click="toggleSidebar"
       >
-        <el-icon :size="24" color="#204ec1"><Expand /></el-icon>
+        <el-icon :size="24" color="#204ec1"><eli-expand /></el-icon>
       </div>
       <Logo />
     </div>
 
     <div class="display-flex">
       <div class="icon-tool flex-center marginR30" @click="handleFresh">
-        <el-icon :size="24" color="#444"><Refresh /></el-icon>
+        <el-icon :size="24" color="#444"><eli-refresh /></el-icon>
       </div>
       <div class="icon-tool flex-center marginR30" @click="toggle">
         <el-icon :size="24" color="#444">

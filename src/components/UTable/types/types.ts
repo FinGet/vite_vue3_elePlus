@@ -12,5 +12,6 @@ export interface TableOptions {
   // 是否是操作项
   action?: boolean,
   // 是否可以编辑
-  editable?: boolean
+  editable?: boolean,
+  fixed?: 'left' | 'right'
 }

@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import {resolve} from "path";
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import { resolve } from "path";
 
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
@@ -10,18 +10,33 @@ import IconsResolver from 'unplugin-icons/resolver';
 const { FileSystemIconLoader } = require('unplugin-icons/loaders');
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 // https://vitejs.dev/config/
+
+const _strings = require('@iconify/utils/lib/misc/strings');
+
+const ElIconResolver = (options = {}) => {
+	return (name) => {
+		const kebab = _strings.camelToKebab.call(void 0, name);
+		const prefix = 'eli';
+		if (!kebab.startsWith(prefix))
+			return;
+
+		const slice = kebab.slice(prefix.length);
+
+		return `@element-plus/icons-vue/dist/es/${slice.substring(1).toLowerCase()}`;
+	};
+};
 export default defineConfig({
 	base: './', // 静态资源和index.html在同一级目录下
 	plugins: [
 		vue(),
 		vueJsx(),
-		Icons({ 
+		Icons({
 			compiler: 'vue3',
 			// 自定义图标加载
 			customCollections: {
 				// 给svg文件设置fill="currentColor"属性，使图标的颜色具有适应性
 				'custom': FileSystemIconLoader('src/assets/svg', svg => svg.replace(/^<svg /, '<svg fill="currentColor" ')),
-			}, 
+			},
 		}),
 		// 实现vue函数的自动导入
 		AutoImport({
@@ -30,7 +45,7 @@ export default defineConfig({
 				/\.vue$/, /\.vue\?vue/, // .vue
 				/\.md$/, // .md
 			],
-		
+
 			// global imports to register
 			imports: [
 				// presets
@@ -51,7 +66,7 @@ export default defineConfig({
 					// 	['default', 'axios'], // import { default as axios } from 'axios',
 					// ],
 				},
-			],		
+			],
 			resolvers: [ElementPlusResolver()],
 		}),
 		// 实现vue组件库的自动按需导入
@@ -62,7 +77,8 @@ export default defineConfig({
 				// {prefix}-{collection}-{icon} {前缀（默认i）}-{图标集名称（custom）}-{图标名称（refresh-line）}
 				IconsResolver({
 					customCollections: ['custom']
-				})
+				}),
+				ElIconResolver()
 			],
 		}),
 	],

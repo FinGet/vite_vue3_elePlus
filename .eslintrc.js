@@ -11,9 +11,7 @@ module.exports = {
 	},
 	extends: [
 		'plugin:vue/vue3-recommended',
-		'plugin:@typescript-eslint/recommended',
-		'./auto-imports.d.ts',
-		'./components.d.ts'
+		'plugin:@typescript-eslint/recommended'
 	],
 	rules: {
 		'vue/multi-word-component-names': 0,

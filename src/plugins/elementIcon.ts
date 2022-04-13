@@ -1,11 +1,9 @@
 import type { App } from 'vue';
 import {
-  HomeFilled, House, BellFilled, Expand, ArrowDown, ArrowDownBold, Tickets,
-  FirstAidKit, Coin, Refresh, Timer, Close, Check
+  House, FirstAidKit, Coin
 } from '@element-plus/icons';
 
-const Icons = [HomeFilled, House, BellFilled, Expand, ArrowDown, ArrowDownBold, Tickets,
-  FirstAidKit, Coin, Refresh, Timer, Close, Check];
+const Icons = [House, FirstAidKit, Coin];
 
 export const installIcon = (app: App) => {
   Icons.forEach(Icon => {
