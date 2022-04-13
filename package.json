@@ -10,7 +10,7 @@
     "lint:fix": "eslint src --fix --ext .ts,.tsx"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
+    "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/core": "^7.6.2",
     "axios": "^0.25.0",
     "dayjs": "^1.10.7",

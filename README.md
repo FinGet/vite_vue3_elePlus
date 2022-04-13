@@ -114,13 +114,17 @@ plugins: [
 
 ### ElementIcon引入
 
+```bash
+yarn add @element-plus/icons-vue
+```
+
 现在官方还不支持自动引入
 
 - 手动引入
 ```javascript
 // plugins/elementIcon.ts
 import type {App} from 'vue';
-import { HomeFilled, House } from '@element-plus/icons';
+import { HomeFilled, House } from '@element-plus/icons-vue';
 
 const Icons = [HomeFilled,House];
 
@@ -149,7 +153,7 @@ const ElIconResolver = (options = {}) => {
 
 		const slice = kebab.slice(prefix.length);
 
-		return `@element-plus/icons-vue/dist/es/${slice.substring(1).toLowerCase()}`;
+		return `@element-plus/icons-vue/dist/lib/${slice.substring(1).toLowerCase()}.vue`;
 	};
 };
 

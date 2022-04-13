@@ -29,8 +29,8 @@
                 <div>
                   <slot v-if="$slots.cellEdit" name="cellEdit" :scope="scope" />
                   <div v-else class="action-icon">
-                    <Check class="check" @click.stop="check(scope)" />
-                    <Close class="close" @click.stop="close(scope)" />
+                    <eli-check class="check" @click.stop="check(scope)" />
+                    <eli-close class="close" @click.stop="close(scope)" />
                   </div>
                 </div>
               </div>

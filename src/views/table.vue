@@ -1,9 +1,9 @@
 <template>
   <el-card>
     <u-table
+      v-model:editRowIndex="editRowIndex"
       :options="options"
       :data="tableData"
-      v-model:editRowIndex="editRowIndex"
       element-loading-text="加载中..."
       element-loading-background="rgba(0,0,0,.8)"
       :element-loading-svg="svg"
@@ -20,7 +20,7 @@
     >
       <template #date="{ scope }">
         <div class="flex-center">
-          <el-icon :size="20"><Timer /></el-icon>
+          <el-icon :size="20"><eli-timer /></el-icon>
           <span style="margin-left: 10px">{{ scope.row.date }}</span>
         </div>
       </template>

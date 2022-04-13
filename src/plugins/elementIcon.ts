@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import {
   House, FirstAidKit, Coin
-} from '@element-plus/icons';
+} from '@element-plus/icons-vue';
 
 const Icons = [House, FirstAidKit, Coin];
 

@@ -22,7 +22,7 @@ const ElIconResolver = (options = {}) => {
 
 		const slice = kebab.slice(prefix.length);
 
-		return `@element-plus/icons-vue/dist/es/${slice.substring(1).toLowerCase()}`;
+		return `@element-plus/icons-vue/dist/lib/${slice.substring(1).toLowerCase()}.vue`;
 	};
 };
 export default defineConfig({
