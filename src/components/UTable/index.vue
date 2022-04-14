@@ -60,10 +60,10 @@
       </template>
     </el-table-column>
   </el-table>
-
+  {{ pageSize }}
   <div v-if="pagination && !isLoading" class="pagination" :style="{ justifyContent }">
     <el-pagination
-      v-model:currentPage="currentPage"
+      v-model:currentPage="currentPageModel"
       :page-sizes="pageSizes"
       :page-size="pageSize"
       layout="total, sizes, prev, pager, next, jumper"
@@ -77,6 +77,7 @@
 <script lang='ts' setup>
   import { PropType, computed, ref, watch, onMounted } from 'vue';
   import { TableOptions } from './types/types';
+  import {useModel} from '@/hooks';
   // import { toLine } from '../../../utils'
   import cloneDeep from 'lodash/cloneDeep';
 
@@ -94,22 +95,27 @@
     // 加载文案
     elementLoadingText: {
       type: String,
+      default: '加载中...'
     },
     // 加载图标名
     elementLoadingSpinner: {
       type: String,
+      default: 'loading'
     },
     // 加载背景颜色
     elementLoadingBackground: {
       type: String,
+      default: '#fff'
     },
     // 加载图标是svg
     elementLoadingSvg: {
-      type: String
+      type: String,
+      default: ''
     },
     // 加载团是svg的配置
     elementLoadingSvgViewBox: {
       type: String,
+      default: ''
     },
     // 编辑显示的图标
     editIcon: {
@@ -160,6 +166,7 @@
 
   let emits = defineEmits(['confirm', 'cancel', 'update:editRowIndex', 'size-change', 'current-change']);
 
+  
   // 分页的每一页数据变化
   let handleSizeChange = (val: number) => {
     emits('size-change', val);
@@ -167,9 +174,10 @@
   };
   // 分页页数改变
   let handleCurrentChange = (val: number) => {
-    emits('current-change', val);
-  // console.log(val)
+    // emits('current-change', val);
+    console.log(val);
   };
+  const currentPageModel = useModel(() => props.currentPage, (val) => emits('current-change', val));
 
   // 当前被点击的单元格的标识
   let currentEdit = ref<string>('');

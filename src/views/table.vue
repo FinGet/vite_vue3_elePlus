@@ -1,5 +1,7 @@
 <template>
   <el-card>
+    current: {{ current }}
+    pageSize: {{ pageSize }}
     <u-table
       v-model:editRowIndex="editRowIndex"
       :options="options"
@@ -87,8 +89,8 @@
     }
   ];
   let current = ref<number>(1);
-  let pageSize = ref<number>(10);
-  let total = ref<number>(0);
+  let pageSize = ref<number>(1);
+  let total = ref<number>(20);
   const tableData = ref([
     {
       date: '2016-05-01',
@@ -137,7 +139,9 @@
     current.value = val;
   // getData()
   };
-
+  const confirm = (val) => {
+    console.log(val);
+  };
   let edit = (scope: any) => {
     // console.log(scope)
     editRowIndex.value = 'edit';

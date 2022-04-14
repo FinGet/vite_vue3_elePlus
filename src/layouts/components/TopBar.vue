@@ -24,7 +24,7 @@
         <el-dropdown>
           <span class="display-flex a-i-c">
             <span style="font-size:16px;font-weight:500;">admin</span>
-            <el-icon class="marginL5"><arrow-down-bold /></el-icon>
+            <el-icon class="marginL5"><eli-arrow-down-bold /></el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
