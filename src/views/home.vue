@@ -16,11 +16,12 @@
     <el-button type="info">默认按钮</el-button>
     <el-button type="danger">默认按钮</el-button>
     <el-button>默认按钮</el-button>
+    {{ state }}
   </div>
 </template>
 
 <script setup lang="ts">
-
+  const state = useStorage('vue-use-local-storage');
 </script>
 
 <style scoped>

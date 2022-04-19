@@ -56,8 +56,13 @@ export default defineConfig({
 					'@vueuse/core': [
 						// named imports
 						'useMouse', // import { useMouse } from '@vueuse/core',
-						'useFullscreen',
-						'useTitle'
+						'useFullscreen', // 全屏
+						'useTitle', // 设置document title
+						'useDebounceFn', // 防抖
+						'useThrottleFn', // 节流
+						'useBase64', // base64
+						'useDraggable', // 拖拽
+						'useStorage'
 						// alias
 						// ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
 					],
