@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
   const state = useStorage('vue-use-local-storage');
+  console.log(state);
 </script>
 
 <style scoped>
